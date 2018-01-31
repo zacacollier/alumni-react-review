@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { get } from './helpers/api';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount () {
+
+    get('https://randomuser.me/api')
+      .then(res => res.json())
+      .then(res => console.log(res))
+
+  }
+
   render() {
     return (
       <div className="App">
