@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { getUsers } from './helpers/api/users';
+import { connect } from 'react-redux';
+import { fetchUsers } from './redux/users';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,7 +8,7 @@ class App extends Component {
 
   componentDidMount () {
 
-    getUsers()
+    this.props.fetchUsers()
       .then(res => console.log(res))
 
   }
@@ -27,4 +28,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  users: state.users.users,
+})
+const mapDispatchToProps = (dispatch) => ({
+  fetchUsers: () => dispatch(fetchUsers()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
