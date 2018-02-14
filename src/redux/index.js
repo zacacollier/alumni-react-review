@@ -1,6 +1,7 @@
-import { createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import users from './users';
 
 const initialState = {
   users: [],
@@ -11,7 +12,7 @@ const initialState = {
 
 const INIT = 'friends-list/INIT';
 
-const reducer = (state = initialState, action) => {
+const ui = (state = initialState, action) => {
 
   switch (action.type) {
 
@@ -27,6 +28,10 @@ const reducer = (state = initialState, action) => {
 
 }
 
+const reducer = combineReducers({
+  ui,
+  users,
+})
 
 const store = createStore(
   reducer,

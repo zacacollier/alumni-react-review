@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { get } from './helpers/api';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
 
   componentDidMount () {
 
-    get('https://randomuser.me/api')
-      .then(res => res.json())
+    this.props.fetchUsers()
       .then(res => console.log(res))
 
   }
@@ -17,7 +14,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
@@ -26,6 +22,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
-export default App;
+}
