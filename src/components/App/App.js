@@ -3,21 +3,25 @@ import './App.css';
 
 export default class App extends Component {
 
-  componentDidMount () {
+  componentWillMount() {
 
     this.props.fetchUsers()
-      .then(res => console.log(res))
 
   }
 
   render() {
+
+    const {
+      users,
+    } = this.props
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {
+            users[0]
+              && <span>{users[0].name.first}</span>
+          }
         </p>
       </div>
     );
