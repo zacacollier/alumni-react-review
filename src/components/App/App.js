@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Users from '../Users';
 import './App.css';
 
 export default class App extends Component {
@@ -18,16 +19,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="App-intro">
-          {
-            users
-              ? users.map(
-                (user, index) =>
-                  (
-                    <h1 key={index}>{user.name.first}</h1>
-                  )
-              )
-              : <div>Loading</div>
-          }
+          <Users />
         </div>
       </div>
     );
