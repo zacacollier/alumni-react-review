@@ -17,12 +17,18 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <p className="App-intro">
+        <div className="App-intro">
           {
-            users[0]
-              && <span>{users[0].name.first}</span>
+            users
+              ? users.map(
+                (user, index) =>
+                  (
+                    <h1 key={index}>{user.name.first}</h1>
+                  )
+              )
+              : <div>Loading</div>
           }
-        </p>
+        </div>
       </div>
     );
   }
